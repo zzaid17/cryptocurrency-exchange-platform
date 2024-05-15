@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 
 // Prototypes
 void printMenu();
@@ -39,18 +40,49 @@ int getUserOption() {
     return userOption;
 }
 
+// Print functions
+void exitProgram() {
+    std::cout << "Exiting program." << std::endl;
+    continueRunning = 0;
+}
+
+void printHelp() {
+    std::cout << "Your aim is to make money. Analyze the market and make bids and offers." << std::endl;
+}
+
+void printStats() {
+    std::cout << "Market looks good." << std::endl;
+}
+
+void makeOffer() {
+    std::cout << "Make an offer - enter the amount." << std::endl;
+}
+
+void makeBid() {
+    std::cout << "Make a bid - enter the amount." << std::endl;
+}
+
+void seeWallet() {
+    std::cout << "Your wallet is empty." << std::endl;
+}
+
+void nextTimeframe() {
+    std::cout << "Going to next timeframe." << std::endl;
+}
+
+void invalidInput() {
+    std::cout << "Invalid choice. Choose a number from 1-6" << std::endl;
+}
+
 // Process user input
 void processUserOption(int userOption) {
     printMenu();
-    if (userOption == 0) {
-        std::cout << "Exiting program." << std::endl;
-        continueRunning = 0;
-    }
-    if (userOption < 0 || userOption > 6) std::cout << "Invalid choice. Choose 1-6" << std::endl;
-    if (userOption == 1) std::cout << "Help - your aim is to make money. Analyze the market and make bids and offers." << std::endl;
-    if (userOption == 2) std::cout << "Market looks good." << std::endl;
-    if (userOption == 3) std::cout << "Make an offer - enter the amount." << std::endl;
-    if (userOption == 4) std::cout << "Make a bid - enter the amount." << std::endl;
-    if (userOption == 5) std::cout << "Your wallet is empty." << std::endl;
-    if (userOption == 6) std::cout << "Going to next timeframe." << std::endl;
+    if (userOption == 0) exitProgram();
+    if (userOption < 0 || userOption > 6) invalidInput();
+    if (userOption == 1) printHelp();
+    if (userOption == 2) printStats();
+    if (userOption == 3) makeOffer();
+    if (userOption == 4) makeBid();
+    if (userOption == 5) seeWallet();
+    if (userOption == 6) nextTimeframe();
 }
